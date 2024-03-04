@@ -26,4 +26,4 @@ jobs:
 
     - name: Deploy to EC2
       run: |
-        ssh -i home/ubuntu/.ssh/gym.pem ubuntu@54.242.215.204 'cd /home/ubuntu && git pull && npm install && pm2 index.js'
+        ssh -i /home/ubuntu/.ssh/gym.pem ubuntu@54.242.215.204 'cd /home/ubuntu && git pull && npm install && pm2 index.js'
