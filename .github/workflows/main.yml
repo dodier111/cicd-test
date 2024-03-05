@@ -1,32 +1,21 @@
-name: CI/CD
-
+name: CI/CD Pipeline
 on:
   push:
     branches:
-      - master
-
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '14'
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Build and test
-      run: npm test
-
-    - name: Deploy to EC2
-      run: |
-        echo "${{ secrets.EC2_SSH_KEY }}" > gym.pem
-        chmod 400 gym.pem
-        scp -i gym.pem gym.pem ubuntu@54.242.215.204:/home/ubuntu/.ssh/
-        ssh -i gym.pem ubuntu@54.242.215.204 'cd /home/ubuntu && git pull && npm install && pm2 start index.js'
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Install dependencies
+        run: npm install
+      - name: Run tests
+        run: npm test
+      - name: Deploy
+        run: node index.js
