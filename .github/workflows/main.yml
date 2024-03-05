@@ -5,7 +5,7 @@ on:
       - main
 jobs:
   build:
-    runs-on: buntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: ctions/checkout@v2
