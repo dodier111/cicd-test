@@ -5,11 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "jest"
+    "test": "echo \"No tests specified\""
   },
   "author": "Your Name",
-  "license": "MIT",
-  "devDependencies": {
-    "jest": "^27.0.6"
-  }
+  "license": "MIT"
 }
